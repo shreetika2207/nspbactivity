@@ -15,6 +15,39 @@
         th {
             background-color: #f2f2f2;
         }
+
+        /* Add colors to phases */
+        .phase-initiate {
+            background-color: #ff9999;
+        }
+
+        .phase-configure {
+            background-color: #ffcc99;
+        }
+
+        .phase-adapt {
+            background-color: #ffff99;
+        }
+
+        .phase-recon {
+            background-color: #ccff99;
+        }
+
+        .phase-empower {
+            background-color: #99ffff;
+        }
+
+        .phase-hypercare {
+            background-color: #9999ff;
+        }
+        /* Add colors to weeks */
+        .week-color-odd {
+            color: red;
+        }
+
+        .week-color-even {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -59,17 +92,17 @@
     <table id="projectTimeline" style=" display: flex; justify-content: center; margin-top: 20px;">
         <thead>
             <tr>
-                <th style="color:green;">Phase / Week</th>
+                <th>Phase / Week</th>
 
             </tr>
         </thead>
         <tbody>
-            <tr><td style="color:green;">Initiate</td></tr>
-            <tr><td style="color:green;">Configure</td></tr>
-            <tr><td style="color:green;">Adapt</td></tr>
-            <tr><td style="color:green;">Recon</td></tr>
-            <tr><td style="color:green;">Empower</td></tr>
-            <tr><td style="color:green;">Hypercare</td></tr>
+            <tr><td class="phase-initiate">Initiate</td></tr>
+            <tr><td class="phase-configure">Configure</td></tr>
+            <tr><td class="phase-adapt">Adapt</td></tr>
+            <tr><td class="phase-recon">Recon</td></tr>
+            <tr><td class="phase-empower">Empower</td></tr>
+            <tr><td class="phase-hypercare">Hypercare</td></tr>
         </tbody>
     </table>
 
@@ -92,10 +125,12 @@
                 const row = table.insertRow(i + 1); // Add 1 to account for the header row
                 const phaseCell = row.insertCell(0);
                 phaseCell.textContent = phase;
+                phaseCell.classList.add(`phase-${phase.toLowerCase()}`); // Add class for phase color
                 // Add cells for each week
                 for (let j = 1; j <= numWeeks; j++) {
                     const weekCell = row.insertCell(j);
                     weekCell.textContent = '';
+                    weekCell.classList.add((j % 2 === 0) ? 'week-color-even' : 'week-color-odd'); // Add class for week color
                 }
             }
 
@@ -107,9 +142,11 @@
             for (let i = 1; i <= numWeeks; i++) {
                 const weekHeader = document.createElement('th');
                 weekHeader.textContent = 'W' + i;
+                weekHeader.classList.add((i % 2 === 0) ? 'week-color-even' : 'week-color-odd'); // Add class for week color
                 headerRow.appendChild(weekHeader);
             }
         }
+
 
 
         function addActivity() {
