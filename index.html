@@ -8,12 +8,25 @@
         table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
-            padding: 8px;
+            padding: 0; /* Remove default padding */
             text-align: center;
         }
 
         th {
             background-color: #f2f2f2;
+            width: 40px; /* Predefined width for header cells */
+            height: 20px; /* Predefined height for header cells */
+        }
+
+        td {
+            width: 40px; /* Predefined width for regular cells */
+            height: 30px; /* Predefined height for regular cells */
+            vertical-align: middle; /* Align content vertically */
+        }
+
+        img {
+            max-width: 100%; /* Ensure images adjust within their parent cells */
+            max-height: 100%; /* Ensure images adjust within their parent cells */
         }
 
         /* Add colors to phases */
@@ -40,6 +53,7 @@
         .phase-hypercare {
             background-color: #9999ff;
         }
+
         /* Add colors to weeks */
         .week-color-odd {
             color: red;
@@ -93,7 +107,6 @@
         <thead>
             <tr>
                 <th>Phase / Week</th>
-
             </tr>
         </thead>
         <tbody>
@@ -146,8 +159,6 @@
                 headerRow.appendChild(weekHeader);
             }
         }
-
-
 
         function addActivity() {
             const week = parseInt(document.getElementById('weekSelect').value);
