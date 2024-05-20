@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Project Timeline</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>NSPB Project Timeline</h2>
+    <form id="activityForm">
+        <label for="week">Select Week:</label>
+        <select id="week">
+            <option value="1">W1</option>
+            <option value="2">W2</option>
+            <option value="3">W3</option>
+            <option value="4">W4</option>
+            <option value="5">W5</option>
+            <option value="6">W6</option>
+            <option value="7">W7</option>
+            <option value="8">W8</option>
+            <option value="9">W9</option>
+            <option value="10">W10</option>
+            <option value="11">W11</option>
+            <option value="12">W12</option>
+            <option value="13">W13</option>
+        </select>
+        <label for="phase">Select Phase:</label>
+        <select id="phase">
+            <option value="Initiate">Initiate</option>
+            <option value="Configure">Configure</option>
+            <option value="Adapt">Adapt</option>
+            <option value="Recon">Recon</option>
+            <option value="Empower">Empower</option>
+            <option value="Hypercare">Hypercare</option>
+        </select>
+        <label for="activity">Select Activity:</label>
+        <select id="activity">
+            <option value="Initiation and Discovery Workshop">Initiation and Discovery Workshop</option>
+            <option value="Actual Loads from NS to NSPB">Actual Loads from NS to NSPB</option>
+            <option value="BRD Submission">BRD Submission</option>
+            <option value="BRD Sign-Off">BRD Sign-Off</option>
+            <option value="Dry-Run / Walkthrough">Dry-Run / Walkthrough</option>
+            <option value="Training and UAT Phase">Training and UAT Phase</option>
+            <option value="Go-Live">Go-Live</option>
+        </select>
+        <button type="button" onclick="addActivity()">Add Activity</button>
+    </form>
+    <table id="projectTimeline">
+        <thead>
+            <tr>
+                <th>Phase / Week</th>
+                <th>W1</th>
+                <th>W2</th>
+                <th>W3</th>
+                <th>W4</th>
+                <th>W5</th>
+                <th>W6</th>
+                <th>W7</th>
+                <th>W8</th>
+                <th>W9</th>
+                <th>W10</th>
+                <th>W11</th>
+                <th>W12</th>
+                <th>W13</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Initiate</td></tr>
+            <tr><td>Configure</td></tr>
+            <tr><td>Adapt</td></tr>
+            <tr><td>Recon</td></tr>
+            <tr><td>Empower</td></tr>
+            <tr><td>Hypercare</td></tr>
+        </tbody>
+    </table>
+
+    <script>// Function to add empty cells for each phase per week
+        window.onload = function() {
+            const rows = document.querySelectorAll("#projectTimeline tbody tr");
+            rows.forEach(row => {
+                for (let i = 1; i <= 13; i++) {
+                    row.insertCell(-1);
+                }
+            });
+        };
+
+        // Function to add activity to the selected cell
+        function addActivity() {
+            const week = document.getElementById('week').value;
+            const phase = document.getElementById('phase').selectedIndex;
+            const activity = document.getElementById('activity').value;
+            const table = document.getElementById('projectTimeline');
+            table.rows[phase + 1].cells[week].innerText = activity;
+        }</script>
+</body>
+</html>
