@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,102 +14,117 @@
 
         th {
             background-color: #f2f2f2;
-            color: red;
         }
     </style>
 </head>
 <body>
     <h2>NSPB Project Timeline</h2>
     <form id="activityForm">
-        <label for="week">Select Week:</label>
-        <select id="week">
-            <option value="1">W1</option>
-            <option value="2">W2</option>
-            <option value="3">W3</option>
-            <option value="4">W4</option>
-            <option value="5">W5</option>
-            <option value="6">W6</option>
-            <option value="7">W7</option>
-            <option value="8">W8</option>
-            <option value="9">W9</option>
-            <option value="10">W10</option>
-            <option value="11">W11</option>
-            <option value="12">W12</option>
-            <option value="13">W13</option>
-        </select>
-        <label for="phase">Select Phase:</label>
-        <select id="phase">
-            <option value="Initiate">Initiate</option>
-            <option value="Configure">Configure</option>
-            <option value="Adapt">Adapt</option>
-            <option value="Recon">Recon</option>
-            <option value="Empower">Empower</option>
-            <option value="Hypercare">Hypercare</option>
-        </select>
-        <label for="activity">Select Activity:</label>
-        <select id="activity">
-            <option value="https://github.com/shreetika2207/nspbactivity/blob/main/Initiate.png">Initiation and Discovery Workshop <img src="https://github.com/shreetika2207/nspbactivity/blob/main/Initiate.png?raw=true" alt="Initiation"></option>
-            <option value="https://raw.githubusercontent.com/shreetika2207/nspbactivity/main/Actual%20Load.png">Actual Loads from NS to NSPB <img src="https://github.com/shreetika2207/nspbactivity/blob/main/Actual%20Load.png?raw=true" alt="Actual Loads"></option>
-            <option value="https://raw.githubusercontent.com/shreetika2207/nspbactivity/main/BRD%20Submission.png">BRD Submission <img src="https://github.com/shreetika2207/nspbactivity/blob/main/BRD%20Submission.png?raw=true" alt="BRD Submission"></option>
-            <option value="https://raw.githubusercontent.com/shreetika2207/nspbactivity/main/BRD%20signoff.png">BRD Sign-Off <img src="https://github.com/shreetika2207/nspbactivity/blob/main/BRD%20signoff.png?raw=true" alt="BRD Sign-Off"></option>
-            <option value="https://raw.githubusercontent.com/shreetika2207/nspbactivity/main/Dry%20run.png">Dry-Run / Walkthrough <img src="https://github.com/shreetika2207/nspbactivity/blob/main/Dry%20run.png?raw=true" alt="Dry-Run / Walkthrough"></option>
-            <option value="https://raw.githubusercontent.com/shreetika2207/nspbactivity/main/trainingUAT.png">Training and UAT Phase <img src="https://github.com/shreetika2207/nspbactivity/blob/main/trainingUAT.png?raw=true" alt="Training and UAT Phase"></option>
-            <option value="https://raw.githubusercontent.com/shreetika2207/nspbactivity/main/GoLive.png">Go-Live <img src="https://github.com/shreetika2207/nspbactivity/blob/main/GoLive.png?raw=true" alt="Go-Live"></option>
-        </select>
-        <button type="button" onclick="addActivity()">Add Activity</button>
+        <label for="week">Select total number of Weeks:</label>
+        <input type="number" id="weekInput" min="1" max="52" value="1"> <!-- Dynamic input field for week selection -->
+        <button type="button" onclick="displayWeeks()">Display</button>
     </form>
+
+    <label for="weekSelect">Select Week:</label>
+    <select id="weekSelect">
+        <!-- Loop to generate options for weeks -->
+        <script>
+            for (let i = 1; i <= 52; i++) {
+                document.write(`<option value="${i}">W${i}</option>`);
+            }
+        </script>
+    </select>
+
+    <label for="phase">Select Phase:</label>
+    <select id="phase">
+        <option value="Initiate">Initiate</option>
+        <option value="Configure">Configure</option>
+        <option value="Adapt">Adapt</option>
+        <option value="Recon">Recon</option>
+        <option value="Empower">Empower</option>
+        <option value="Hypercare">Hypercare</option>
+    </select>
+    <label for="activity">Select Activity:</label>
+    <select id="activity">
+        <option value="https://raw.githubusercontent.com/shreetika2207/nspbactivity/main/Initiate.png">Initiation and Discovery Workshop <img src="https://github.com/shreetika2207/nspbactivity/blob/main/Initiate.png?raw=true" alt="Initiation"></option>
+        <option value="https://raw.githubusercontent.com/shreetika2207/nspbactivity/main/Actual%20Load.png">Actual Loads from NS to NSPB <img src="https://github.com/shreetika2207/nspbactivity/blob/main/Actual%20Load.png?raw=true" alt="Actual Loads"></option>
+        <option value="https://raw.githubusercontent.com/shreetika2207/nspbactivity/main/BRD%20Submission.png">BRD Submission <img src="https://github.com/shreetika2207/nspbactivity/blob/main/BRD%20Submission.png?raw=true" alt="BRD Submission"></option>
+        <option value="https://raw.githubusercontent.com/shreetika2207/nspbactivity/main/BRD%20signoff.png">BRD Sign-Off <img src="https://github.com/shreetika2207/nspbactivity/blob/main/BRD%20signoff.png?raw=true" alt="BRD Sign-Off"></option>
+        <option value="https://raw.githubusercontent.com/shreetika2207/nspbactivity/main/Dry%20run.png">Dry-Run / Walkthrough <img src="https://github.com/shreetika2207/nspbactivity/blob/main/Dry%20run.png?raw=true" alt="Dry-Run / Walkthrough"></option>
+        <option value="https://raw.githubusercontent.com/shreetika2207/nspbactivity/main/trainingUAT.png">Training and UAT Phase <img src="https://github.com/shreetika2207/nspbactivity/blob/main/trainingUAT.png?raw=true" alt="Training and UAT Phase"></option>
+        <option value="https://raw.githubusercontent.com/shreetika2207/nspbactivity/main/GoLive.png">Go-Live <img src="https://github.com/shreetika2207/nspbactivity/blob/main/GoLive.png?raw=true" alt="Go-Live"></option>
+    </select>
+    <button type="button" onclick="addActivity()">Add Activity</button>
+
     <table id="projectTimeline">
         <thead>
             <tr>
-                <th style="color:black;">Phase / Week</th>
-                <th>W1</th>
-                <th>W2</th>
-                <th>W3</th>
-                <th>W4</th>
-                <th>W5</th>
-                <th>W6</th>
-                <th>W7</th>
-                <th>W8</th>
-                <th>W9</th>
-                <th>W10</th>
-                <th>W11</th>
-                <th>W12</th>
-                <th>W13</th>
+                <th>Phase / Week</th>
+
             </tr>
         </thead>
         <tbody>
-            <tr><td style="color:green;">Initiate</td></tr>
-            <tr><td style="color:green;">Configure</td></tr>
-            <tr><td style="color:green;">Adapt</td></tr>
-            <tr><td style="color:green;">Recon</td></tr>
-            <tr><td style="color:green;">Empower</td></tr>
-            <tr><td style="color:green;">Hypercare</td></tr>
+            <tr><td>Initiate</td></tr>
+            <tr><td>Configure</td></tr>
+            <tr><td>Adapt</td></tr>
+            <tr><td>Recon</td></tr>
+            <tr><td>Empower</td></tr>
+            <tr><td>Hypercare</td></tr>
         </tbody>
     </table>
 
-    <script>// Function to add empty cells for each phase per week
-        window.onload = function() {
-            const rows = document.querySelectorAll("#projectTimeline tbody tr");
-            rows.forEach(row => {
-                for (let i = 1; i <= 13; i++) {
-                    row.insertCell(-1);
-                }
-            });
-        };
-
-        // Function to add activity to the selected cell
-       function addActivity() {
-            const week = document.getElementById('week').value;
-            const phase = document.getElementById('phase').selectedIndex;
-            const activity = document.getElementById('activity').selectedOptions[0].innerHTML;
+    <script>
+        function displayWeeks() {
+            const weekInput = document.getElementById('weekInput');
+            const numWeeks = parseInt(weekInput.value);
             const table = document.getElementById('projectTimeline');
-            const imgSrc = document.getElementById('activity').value;
-            const imgAlt = activity.split('<')[0].trim(); // Extract activity name from HTML
-            const imgElement = document.createElement('img');
-            imgElement.src = imgSrc;
-            imgElement.alt = imgAlt;
-            table.rows[phase + 1].cells[week].innerHTML = ''; // Clear existing content
-            table.rows[phase + 1].cells[week].appendChild(imgElement);
-        }</script>
+            const numPhases = 6; // Total number of phases
+
+            // Clear existing table rows except for the header row
+            while (table.rows.length > 1) {
+                table.deleteRow(1);
+            }
+
+            // Create new rows for each phase
+            const phases = ["Initiate", "Configure", "Adapt", "Recon", "Empower", "Hypercare"];
+            for (let i = 0; i < numPhases; i++) {
+                const phase = phases[i];
+                const row = table.insertRow(i + 1); // Add 1 to account for the header row
+                const phaseCell = row.insertCell(0);
+                phaseCell.textContent = phase;
+                // Add cells for each week
+                for (let j = 1; j <= numWeeks; j++) {
+                    const weekCell = row.insertCell(j);
+                    weekCell.textContent = '';
+                }
+            }
+
+            // Create new table headers for the selected number of weeks
+            const headerRow = table.getElementsByTagName('tr')[0];
+            while (headerRow.cells.length > 1) {
+                headerRow.deleteCell(1);
+            }
+            for (let i = 1; i <= numWeeks; i++) {
+                const weekHeader = document.createElement('th');
+                weekHeader.textContent = 'W' + i;
+                headerRow.appendChild(weekHeader);
+            }
+        }
+
+
+        function addActivity() {
+            const week = parseInt(document.getElementById('weekSelect').value);
+            const phase = document.getElementById('phase').selectedIndex;
+            const activity = document.getElementById('activity').value;
+            const table = document.getElementById('projectTimeline');
+
+            // Adjust row index by 1 to account for the header row
+            const rowIndex = phase + 1;
+
+            // Create a new cell for the activity and set its content
+            const cell = table.rows[rowIndex].cells[week];
+            cell.innerHTML = `<img src="${activity}" alt="Activity Image">`;
+        }
+    </script>
 </body>
 </html>
