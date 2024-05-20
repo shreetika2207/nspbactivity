@@ -47,13 +47,13 @@
         </select>
         <label for="activity">Select Activity:</label>
         <select id="activity">
-            <option value="Initiation and Discovery Workshop">Initiation and Discovery Workshop</option>
-            <option value="Actual Loads from NS to NSPB">Actual Loads from NS to NSPB</option>
-            <option value="BRD Submission">BRD Submission</option>
-            <option value="BRD Sign-Off">BRD Sign-Off</option>
-            <option value="Dry-Run / Walkthrough">Dry-Run / Walkthrough</option>
-            <option value="Training and UAT Phase">Training and UAT Phase</option>
-            <option value="Go-Live">Go-Live</option>
+            <option value="Initiation and Discovery Workshop">Initiation and Discovery Workshop <img src="https://github.com/shreetika2207/nspbactivity/blob/main/Initiation.png" alt="Initiation"></option>
+            <option value="Actual Loads from NS to NSPB">Actual Loads from NS to NSPB <img src="https://github.com/shreetika2207/nspbactivity/blob/main/Actual%20Load.png" alt="Actual Loads"></option>
+            <option value="BRD Submission">BRD Submission <img src="https://github.com/shreetika2207/nspbactivity/blob/main/BRD%20Submission.png" alt="BRD Submission"></option>
+            <option value="BRD Sign-Off">BRD Sign-Off <img src="https://github.com/shreetika2207/nspbactivity/blob/main/BRD%20signoff.png" alt="BRD Sign-Off"></option>
+            <option value="Dry-Run / Walkthrough">Dry-Run / Walkthrough <img src="https://github.com/shreetika2207/nspbactivity/blob/main/Dry%20run.png" alt="BRD Submission"></option>
+            <option value="Training and UAT Phase">Training and UAT Phase <img src="https://github.com/shreetika2207/nspbactivity/blob/main/trainingUAT.png" alt="Training and UAT Phase"></option>
+            <option value="Go-Live">Go-Live <img src="https://github.com/shreetika2207/nspbactivity/blob/main/GoLive.png" alt="Go-Live "></option>
         </select>
         <button type="button" onclick="addActivity()">Add Activity</button>
     </form>
@@ -97,12 +97,18 @@
         };
 
         // Function to add activity to the selected cell
-        function addActivity() {
+       function addActivity() {
             const week = document.getElementById('week').value;
             const phase = document.getElementById('phase').selectedIndex;
-            const activity = document.getElementById('activity').value;
+            const activity = document.getElementById('activity').selectedOptions[0].innerHTML;
             const table = document.getElementById('projectTimeline');
-            table.rows[phase + 1].cells[week].innerText = activity;
+            const imgSrc = document.getElementById('activity').value;
+            const imgAlt = activity.split('<')[0].trim(); // Extract activity name from HTML
+            const imgElement = document.createElement('img');
+            imgElement.src = imgSrc;
+            imgElement.alt = imgAlt;
+            table.rows[phase + 1].cells[week].innerHTML = ''; // Clear existing content
+            table.rows[phase + 1].cells[week].appendChild(imgElement);
         }</script>
 </body>
 </html>
